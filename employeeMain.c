@@ -38,23 +38,23 @@ int main(void) {
     else printf("employee %s not located in record\n",wantedName);
 
     char* wantedPhone = "714-555-2749";
-    matchPtr = searchByName(EmployeeTable, EmployeeTableEntries, wantedPhone);
+    matchPtr = searchByPhone(EmployeeTable, EmployeeTableEntries, wantedPhone);
     if (matchPtr != NULL) printf("employee %s located, at record %d\n",wantedPhone, matchPtr - EmployeeTable); //ditto
     else printf("employee %s not located in record\n",wantedPhone);
 
     wantedPhone = "714-555-9001";
-    matchPtr = searchByName(EmployeeTable, EmployeeTableEntries, wantedPhone);
+    matchPtr = searchByPhone(EmployeeTable, EmployeeTableEntries, wantedPhone);
     if (matchPtr != NULL) printf("employee %s located, at record %d\n",wantedPhone, matchPtr - EmployeeTable); //ditto
     else printf("employee %s not located in record\n",wantedPhone);
 
     double wantedSalary = 4.50;
-    matchPtr = searchByNumber(EmployeeTable, EmployeeTableEntries, wantedSalary); //pass in table, table size, given number, should return null
-    if (matchPtr != NULL) printf("employee %d located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //Subtracting to get the offset, which is automatically divided by the correct length of bytes (32)
+    matchPtr = searchBySalary(EmployeeTable, EmployeeTableEntries, wantedSalary); //pass in table, table size, given number, should return null
+    if (matchPtr != NULL) printf("employee %f located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //Subtracting to get the offset, which is automatically divided by the correct length of bytes (32)
     else printf("employee %f not located in record\n", wantedSalary);
 
     wantedSalary = 0.002;
-    matchPtr = searchByNumber(EmployeeTable, EmployeeTableEntries, wantedSalary); //pass in table, table size, given number, should return null
-    if (matchPtr != NULL) printf("employee %d located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //Subtracting to get the offset, which is automatically divided by the correct length of bytes (32)
+    matchPtr = searchBySalary(EmployeeTable, EmployeeTableEntries, wantedSalary); //pass in table, table size, given number, should return null
+    if (matchPtr != NULL) printf("employee %f located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //Subtracting to get the offset, which is automatically divided by the correct length of bytes (32)
     else printf("employee %f not located in record\n", wantedSalary);
 
     
