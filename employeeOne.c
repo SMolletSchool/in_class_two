@@ -18,3 +18,21 @@ pointerEmployee searchByName (pointerConstEmployee ptr, int TableSize, char* giv
     }
     return NULL;
 }
+
+pointerEmployee searchByPhone (pointerConstEmployee ptr, int TableSize, char* givenPhone) {
+    const pointerConstEmployee endPtr = ptr + TableSize;
+
+    for  (;ptr < endPtr; ptr++) {
+        if (strcmp(ptr -> phone, givenPhone) == 0) return (pointerEmployee) ptr;
+    }
+    return NULL;
+}
+
+pointerEmployee searchBySalary (pointerConstEmployee ptr, int TableSize, double givenSalary) {
+    const pointerConstEmployee endPtr = ptr + TableSize;
+
+    for  (;ptr < endPtr; ptr++) {
+        if (ptr -> salary == givenSalary) return (pointerEmployee) ptr;
+    }
+    return NULL;
+}

@@ -22,7 +22,10 @@ int main(void) {
     if (matchPtr != NULL) printf("employee %d located, at record %d\n", wantedNumber, matchPtr - EmployeeTable); //Subtracting to get the offset, which is automatically divided by the correct length of bytes (32)
     else printf("employee not located in record\n");
 
-    matchPtr = searchByName(EmployeeTable, EmployeeTableEntries, "Tony Bobcat");
+    char* wantedName;
+    printf("Search for employee by Name:\n");
+    scanf("%s", wantedName);
+    matchPtr = searchByName(EmployeeTable, EmployeeTableEntries, wantedName);
     if (matchPtr != NULL) printf("employee, Tony Bobcat, located, at record %d\n", matchPtr - EmployeeTable); //ditto
     else printf("employee not located in record\n");
 
