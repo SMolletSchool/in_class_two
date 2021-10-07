@@ -45,10 +45,10 @@ pointerEmployee searchByName(pointerConstEmployee ptr, int size, char* name) { /
     return searchTable(ptr, size, name, compareName);
 }
 
-pointerEmployee searchBySalary(pointerConstEmployee ptr, int size, long number) { //Wrapper function. This is used in main.
-    return searchTable(ptr, size, &number, compareSalary); //Pass number ADDRESS
+pointerEmployee searchBySalary(pointerConstEmployee ptr, int size, double salary) { //Wrapper function. This is used in main.
+    return searchTable(ptr, size, &salary, compareSalary); //Pass number ADDRESS
 }
 
-pointerEmployee searchByPhone(pointerConstEmployee ptr, int size, char* name) { //ditto
-    return searchTable(ptr, size, name, comparePhone);
+pointerEmployee searchByPhone(pointerConstEmployee ptr, int size, char* phone) { //ditto
+    return searchTable(ptr, size, phone, comparePhone);
 }
