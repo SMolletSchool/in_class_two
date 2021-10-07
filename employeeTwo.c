@@ -29,10 +29,26 @@ static int compareName(const void * targetPtr, pointerConstEmployee tableValuePt
     return strcmp((char *) targetPtr, tableValuePtr -> name); 
 }
 
+static int compareSalary(const void * targetPtr, pointerConstEmployee tableValuePtr) { //ditto
+    return * (double *) targetPtr != tableValuePtr -> salary;
+}
+
+static int comparePhone(const void * targetPtr, pointerConstEmployee tableValuePtr) { //ditto
+    return strcmp((char *) targetPtr, tableValuePtr -> phone); 
+}
+
 pointerEmployee searchByNumber(pointerConstEmployee ptr, int size, long number) { //Wrapper function. This is used in main.
     return searchTable(ptr, size, &number, compareNumber); //Pass number ADDRESS
 }
 
 pointerEmployee searchByName(pointerConstEmployee ptr, int size, char* name) { //ditto
     return searchTable(ptr, size, name, compareName);
+}
+
+pointerEmployee searchBySalary(pointerConstEmployee ptr, int size, long number) { //Wrapper function. This is used in main.
+    return searchTable(ptr, size, &number, compareSalary); //Pass number ADDRESS
+}
+
+pointerEmployee searchByPhone(pointerConstEmployee ptr, int size, char* name) { //ditto
+    return searchTable(ptr, size, name, comparePhone);
 }

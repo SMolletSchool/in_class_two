@@ -8,6 +8,8 @@ int main(void) {
     //defined in employeeOne.c/employeeTwo.c, used here to reduce panic attacks in compiler
     pointerEmployee searchByNumber(const Employee table[], int tableSize, long givenNumber);
     pointerEmployee searchByName(const Employee table[], int tableSize, char* givenName);
+    pointerEmployee searchBySalary(const Employee table[], int tableSize, double givenSalary);
+    pointerEmployee searchByPhone(const Employee table[], int tableSize, char* givenName);
 
     //def in employeeTable.c, hence the extern
     extern Employee EmployeeTable[];
@@ -25,6 +27,6 @@ int main(void) {
     matchPtr = searchByName(EmployeeTable, EmployeeTableEntries, "Tony Bobcat");
     if (matchPtr != NULL) printf("employee, Tony Bobcat, located, at record %d\n", matchPtr - EmployeeTable); //ditto
     else printf("employee not located in record\n");
-
+    
     return EXIT_SUCCESS; //funny value for main to just return 0
 }
