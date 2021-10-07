@@ -1,5 +1,6 @@
 //gcc employeeMain.c employeeTable.c employeeOne.c
 //gcc employeeMain.c employeeTable.c employeeTwo.c
+
 #include <string.h>
 #include <stdlib.h>
 #include "employee.h"
@@ -8,6 +9,8 @@ int main(void) {
     //defined in employeeOne.c/employeeTwo.c, used here to reduce panic attacks in compiler
     pointerEmployee searchByNumber(const Employee table[], int tableSize, long givenNumber);
     pointerEmployee searchByName(const Employee table[], int tableSize, char* givenName);
+    pointerEmployee searchBySalary(const Employee table[], int tableSize, double givenNumber);
+    pointerEmployee searchByPhone(const Employee table[], int tableSize, char* givenName);
 
     //def in employeeTable.c, hence the extern
     extern Employee EmployeeTable[];
@@ -37,22 +40,22 @@ int main(void) {
 
     double wantedSalary = 8.78;
     matchPtr = searchBySalary(EmployeeTable, EmployeeTableEntries, wantedSalary); //ditto
-    if (matchPtr != NULL) printf("employee %f located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //ditto
+    if (matchPtr != NULL) printf("employee with salary %.3f located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //ditto
     else printf("employee %f not located in record\n", wantedSalary);
 
     wantedSalary = 11.111;
     matchPtr = searchBySalary(EmployeeTable, EmployeeTableEntries, wantedSalary); //ditto
-    if (matchPtr != NULL) printf("employee %f located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //ditto
+    if (matchPtr != NULL) printf("employee with salary %.3f located, at record %d\n", wantedSalary, matchPtr - EmployeeTable); //ditto
     else printf("employee %f not located in record\n", wantedSalary);
 
     char* wantedPhone = "714-555-2749";
     matchPtr = searchByPhone(EmployeeTable, EmployeeTableEntries, wantedPhone);
-    if (matchPtr != NULL) printf("employee with phone number %s, located, at record %d\n", wantedPhone, matchPtr - EmployeeTable); //ditto
+    if (matchPtr != NULL) printf("employee with phone number %s located, at record %d\n", wantedPhone, matchPtr - EmployeeTable); //ditto
     else printf("employee %s not located in record\n", wantedPhone);
 
     wantedPhone = "909-WORKERS-RUS";
     matchPtr = searchByPhone(EmployeeTable, EmployeeTableEntries, wantedPhone);
-    if (matchPtr != NULL) printf("employee with phone number %s, located, at record %d\n", wantedPhone, matchPtr - EmployeeTable); //ditto
+    if (matchPtr != NULL) printf("employee with phone number %s located, at record %d\n", wantedPhone, matchPtr - EmployeeTable); //ditto
     else printf("employee %s not located in record\n", wantedPhone);
 
     return EXIT_SUCCESS; //funny value for main to just return 0
