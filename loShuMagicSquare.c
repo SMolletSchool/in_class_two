@@ -10,7 +10,7 @@ int testForLoShu[3][3] = {
 };
 
 int inputTest(int givenInt, int givenArray[]) {
-    for (int l = 0; l < sizeof(givenArray)/sizeof(givenArray[0]); l++) { //Size of array will be 9 in this case, made function more generalized for the h e c k of it
+    for (int l = 0; l < 9; l++) { //Size of array will be 9
         if (givenArray[l] == 0) { //If it's 0, then no need to check the rest of the array
             givenArray[l] = givenInt; //Set to the value for next time in the function
             return 1; //boolean True
@@ -21,8 +21,21 @@ int inputTest(int givenInt, int givenArray[]) {
     }
 }
 
-int doRandomLoShu() {
-    int attempts = 0;
+int LoShuValidate() {
+    if (testForLoShu[0][0] + testForLoShu[0][1] + testForLoShu[0][2] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Columns success
+        if (testForLoShu[0][0] + testForLoShu[1][0] + testForLoShu[2][0] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Rows success
+            if (testForLoShu[0][0] + testForLoShu[1][1] + testForLoShu[2][2] == 15 && testForLoShu[2][0] + testForLoShu[1][1] + testForLoShu[0][2] == 15) { //Diagonals success
+                return 1;
+            }
+            else return 0;
+        }
+        else return 0;
+    }
+    else return 0;
+}
+
+long long doRandomLoShu() {
+    long long attempts = 0;
 
     do {
         attempts++;
@@ -48,26 +61,14 @@ int doRandomLoShu() {
             }
         }
 
-        //test randomly generated lo shu square
+        //test randomly generated lo shu square (done in while)
 
-    } while (LoShuValidate == 0);
-    
+    } while (LoShuValidate() == 0);
     
     return attempts;
 }
 
-int LoShuValidate() {
-    if (testForLoShu[0][0] + testForLoShu[0][1] + testForLoShu[0][2] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Columns success
-        if (testForLoShu[0][0] + testForLoShu[1][0] + testForLoShu[2][0] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Rows success
-            if (testForLoShu[0][0] + testForLoShu[1][1] + testForLoShu[2][2] == 15 && testForLoShu[2][0] + testForLoShu[1][1] + testForLoShu[0][2] == 15) { //Diagonals success
-                return 1;
-            }
-            else return 0;
-        }
-        else return 0;
-    }
-    else return 0;
-}
+
 int main() {
 
     //User input LoShu, commented out in final
@@ -100,7 +101,7 @@ int main() {
 
     //Random test Lo Shu
     srand(time(NULL)); //getting seed from time information
-    printf("Random Lo Shu attempts: %d\n",doRandomLoShu());
+    printf("Random Lo Shu attempts: %d\n", doRandomLoShu());
     printf("Successful square:\n[%d,%d,%d]\n[%d,%d,%d]\n[%d,%d,%d]\n", testForLoShu[0][0], testForLoShu[1][0], testForLoShu[2][0], testForLoShu[0][1], testForLoShu[1][1], testForLoShu[2][1], testForLoShu[0][2], testForLoShu[1][2], testForLoShu[2][2]);
 
     return EXIT_SUCCESS;
