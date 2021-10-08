@@ -22,7 +22,25 @@ int inputTest(int givenInt, int givenArray[]) {
 }
 
 int LoShuValidate() {
-    if (testForLoShu[0][0] + testForLoShu[0][1] + testForLoShu[0][2] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Columns success
+    if (testForLoShu[0][0] + testForLoShu[0][1] + testForLoShu[0][2] == 15) { //row 1
+        if (testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15) { //row 2
+            if (testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //row 3
+                if (testForLoShu[0][0] + testForLoShu[1][0] + testForLoShu[2][0] == 15) { //column 1
+                    if (testForLoShu[0][1] + testForLoShu[1][1] + testForLoShu[2][1] == 15) { //column 2
+                        if (testForLoShu[0][2] + testForLoShu[1][2] + testForLoShu[2][2] == 15) { //column 3
+                            if (testForLoShu[0][0] + testForLoShu[1][1] + testForLoShu[2][2] == 15) { //diagonal leftup to downright
+                                if (testForLoShu[2][0] + testForLoShu[1][1] + testForLoShu[0][2] == 15) { //diagonal rightup to downleft
+                                    return 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+    /*if (testForLoShu[0][0] + testForLoShu[0][1] + testForLoShu[0][2] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Columns success
         if (testForLoShu[0][0] + testForLoShu[1][0] + testForLoShu[2][0] == 15 && testForLoShu[1][0] + testForLoShu[1][1] + testForLoShu[1][2] == 15 && testForLoShu[2][0] + testForLoShu[2][1] + testForLoShu[2][2] == 15) { //Rows success
             if (testForLoShu[0][0] + testForLoShu[1][1] + testForLoShu[2][2] == 15 && testForLoShu[2][0] + testForLoShu[1][1] + testForLoShu[0][2] == 15) { //Diagonals success
                 return 1;
@@ -31,7 +49,7 @@ int LoShuValidate() {
         }
         else return 0;
     }
-    else return 0;
+    else return 0;*/
 }
 
 long long doRandomLoShu() {
@@ -102,7 +120,7 @@ int main() {
     //Random test Lo Shu
     srand(time(NULL)); //getting seed from time information
     printf("Random Lo Shu attempts: %d\n", doRandomLoShu());
-    printf("Successful square:\n[%d,%d,%d]\n[%d,%d,%d]\n[%d,%d,%d]\n", testForLoShu[0][0], testForLoShu[1][0], testForLoShu[2][0], testForLoShu[0][1], testForLoShu[1][1], testForLoShu[2][1], testForLoShu[0][2], testForLoShu[1][2], testForLoShu[2][2]);
+    printf("Successful square:\n[%d,%d,%d]\n[%d,%d,%d]\n[%d,%d,%d]\n", testForLoShu[0][0], testForLoShu[0][1], testForLoShu[0][2], testForLoShu[1][0], testForLoShu[1][1], testForLoShu[1][2], testForLoShu[2][0], testForLoShu[2][1], testForLoShu[2][2]);
 
     return EXIT_SUCCESS;
 }
